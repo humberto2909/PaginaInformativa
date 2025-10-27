@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificados - Ingeniería Económica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item strong {
+            color: #764ba2;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .certificate-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .certificate-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .certificate-title {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #764ba2;
+            position: relative;
+        }
+
+        .certificate-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: #667eea;
+            animation: slideRight 1s ease;
+        }
+
+        .certificate-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .certificate-image:hover {
+            transform: scale(1.02);
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .content-section {
+            margin-top: 30px;
+        }
+
+        .content-section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .content-section p {
+            color: #444;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .content-section li {
+            color: #555;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .content-section li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .certificate-card {
+                padding: 25px;
+            }
+
+            .certificate-title {
+                font-size: 1.5em;
+            }
+
+            .header-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .placeholder-text {
+            text-align: center;
+            color: #667eea;
+            font-style: italic;
+            padding: 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e0e7ef 100%);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Moocs - Ingeniería Económica</h1>
+            <div class="header-info">
+                <div class="info-item">
+                    <strong>Estudiante:</strong>
+                    Humberto Javier Ramos Figueroa
+                </div>
+                <div class="info-item">
+                    <strong>Docente:</strong>
+                    Andrea Burbano Bustos
+                </div>
+            </div>
+        </div>
+
+        <div class="certificate-card">
+            <h2 class="certificate-title">Organización Financiera, Ahorro y Presupuesto</h2>
+            
+            <div class="certificate-image">
+                <p class="placeholder-text"><img src="imagenes/modulo1.png" alt=""></p>
+            </div>
+
+            <div class="content-section">
+                <h3>¿Qué es el ahorro?</h3>
+                <p>El ahorro es la porción de los ingresos que no se destina al consumo inmediato y se reserva para el futuro. Representa una decisión consciente de posponer el gasto presente con el objetivo de contar con recursos disponibles para emergencias, metas específicas o inversiones futuras. El ahorro es fundamental para construir estabilidad financiera y alcanzar objetivos a mediano y largo plazo.</p>
+
+                <h3>¿Cuál es la mejor alternativa para ahorrar?</h3>
+                <p>La mejor alternativa para ahorrar depende de los objetivos personales, el horizonte temporal y el perfil de riesgo de cada persona. Entre las opciones más recomendadas se encuentran: cuentas de ahorro tradicionales para liquidez inmediata, CDTs o bonos para plazos definidos con mayor rentabilidad, fondos de inversión para diversificación, y el método de ahorro automático que permite apartar un porcentaje fijo del ingreso antes de realizar cualquier gasto.</p>
+
+                <h3>¿Qué es el presupuesto?</h3>
+                <p>El presupuesto es una herramienta de planeación financiera que permite organizar, controlar y proyectar los ingresos y gastos durante un período determinado. Es un plan detallado que ayuda a tomar decisiones informadas sobre cómo asignar los recursos disponibles, priorizar necesidades y evitar el sobreendeudamiento.</p>
+
+                <h3>¿Cómo se hace un presupuesto?</h3>
+                <ul>
+                    <li><strong>Registrar todos los ingresos:</strong> Identificar todas las fuentes de ingreso mensual (salario, comisiones, rentas, etc.)</li>
+                    <li><strong>Listar todos los gastos:</strong> Clasificar los gastos en fijos (arriendo, servicios, transporte) y variables (alimentación, entretenimiento)</li>
+                    <li><strong>Categorizar y priorizar:</strong> Separar gastos esenciales de los opcionales</li>
+                    <li><strong>Establecer metas de ahorro:</strong> Definir un porcentaje o monto fijo para ahorrar mensualmente</li>
+                    <li><strong>Hacer seguimiento:</strong> Revisar periódicamente el cumplimiento del presupuesto y hacer ajustes necesarios</li>
+                </ul>
+
+                <h3>Tips y reglas para el manejo del dinero y planeación financiera</h3>
+                <ul>
+                    <li><strong>Regla 50/30/20:</strong> Destinar 50% a necesidades básicas, 30% a deseos y 20% al ahorro</li>
+                    <li><strong>Pague primero:</strong> Apartar el ahorro antes de gastar, no después</li>
+                    <li><strong>Fondo de emergencia:</strong> Mantener un ahorro equivalente a 3-6 meses de gastos esenciales</li>
+                    <li><strong>Evitar deudas innecesarias:</strong> Usar el crédito de forma responsable y evitar compras impulsivas</li>
+                    <li><strong>Automatizar ahorros:</strong> Configurar transferencias automáticas a cuentas de ahorro</li>
+                    <li><strong>Revisar gastos hormiga:</strong> Identificar y reducir pequeños gastos frecuentes que suman grandes cantidades</li>
+                    <li><strong>Educación financiera continua:</strong> Mantenerse informado sobre productos financieros y estrategias de inversión</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="certificate-card">
+            <h2 class="certificate-title">Tarjetas de Crédito o Débito: Diferencias y Aspectos Principales de Funcionamiento</h2>
+            
+            <div class="certificate-image">
+                <p class="placeholder-text"><img src="imagenes/modulo2.png" alt=""></p>
+            </div>
+
+            <div class="content-section">
+                <h3>¿Qué es una tarjeta de crédito y para qué sirve?</h3>
+                <p>Una tarjeta de crédito es un instrumento financiero emitido por una entidad bancaria que permite realizar compras y disponer de dinero hasta un límite preestablecido, sin necesidad de tener fondos propios en el momento de la transacción. Funciona como un préstamo renovable que debe ser pagado en una fecha establecida. Sirve para facilitar compras, diferir pagos, acceder a beneficios y construir historial crediticio.</p>
+
+                <h3>Características y beneficios de la tarjeta de crédito</h3>
+                <ul>
+                    <li><strong>Cupo de crédito:</strong> Límite máximo de dinero disponible para usar</li>
+                    <li><strong>Período de gracia:</strong> Tiempo entre la compra y la fecha de pago sin generar intereses</li>
+                    <li><strong>Pago mínimo:</strong> Cantidad mínima que se debe pagar mensualmente</li>
+                    <li><strong>Beneficios adicionales:</strong> Puntos, millas, cashback, seguros de viaje y compra</li>
+                    <li><strong>Financiamiento:</strong> Posibilidad de diferir pagos en cuotas</li>
+                    <li><strong>Aceptación internacional:</strong> Uso en establecimientos y compras en línea a nivel mundial</li>
+                    <li><strong>Construcción de historial:</strong> Uso responsable mejora el puntaje crediticio</li>
+                </ul>
+
+                <h3>Tipos de tarjetas de crédito</h3>
+                <ul>
+                    <li><strong>Tarjetas clásicas:</strong> Cupo básico y beneficios estándar</li>
+                    <li><strong>Tarjetas doradas (Gold):</strong> Mayor cupo y beneficios adicionales</li>
+                    <li><strong>Tarjetas platinum:</strong> Cupos elevados, seguros premium y acceso a salas VIP</li>
+                    <li><strong>Tarjetas corporativas:</strong> Diseñadas para gastos empresariales</li>
+                    <li><strong>Tarjetas de retail:</strong> Emitidas por tiendas específicas con beneficios en sus establecimientos</li>
+                    <li><strong>Tarjetas con recompensas:</strong> Enfocadas en acumular puntos, millas o cashback</li>
+                </ul>
+
+                <h3>¿Qué es una tarjeta de débito y para qué sirve?</h3>
+                <p>Una tarjeta de débito es un medio de pago vinculado directamente a una cuenta bancaria, que permite realizar transacciones utilizando únicamente el dinero disponible en dicha cuenta. A diferencia del crédito, no permite gastar más de lo que se tiene. Sirve para realizar compras, retirar efectivo en cajeros automáticos, hacer pagos en línea y transferencias, todo con fondos propios.</p>
+
+                <h3>Características y beneficios de la tarjeta de débito</h3>
+                <ul>
+                    <li><strong>Control de gastos:</strong> Solo se puede gastar el dinero disponible en la cuenta</li>
+                    <li><strong>Sin deuda:</strong> No genera intereses ni cargos por financiación</li>
+                    <li><strong>Retiros en cajeros:</strong> Acceso inmediato al efectivo</li>
+                    <li><strong>Facilidad de uso:</strong> Aceptada en la mayoría de establecimientos</li>
+                    <li><strong>Sin cuota de manejo elevada:</strong> Generalmente costos menores que tarjetas de crédito</li>
+                    <li><strong>Seguridad:</strong> Menor riesgo de sobreendeudamiento</li>
+                    <li><strong>Transacciones inmediatas:</strong> Los cargos se reflejan de inmediato en la cuenta</li>
+                </ul>
+
+                <h3>Información que debe ser suministrada al consumidor financiero</h3>
+                <ul>
+                    <li><strong>Tasas de interés:</strong> Tasa nominal, efectiva anual y costo total del crédito</li>
+                    <li><strong>Comisiones y tarifas:</strong> Cuota de manejo, retiros, avances en efectivo, pagos internacionales</li>
+                    <li><strong>Fecha de corte y pago:</strong> Períodos de facturación y vencimiento</li>
+                    <li><strong>Pago mínimo y total:</strong> Cálculo detallado de cada uno</li>
+                    <li><strong>Seguros asociados:</strong> Coberturas, costos y condiciones de seguros incluidos</li>
+                    <li><strong>Penalidades:</strong> Cargos por mora, reposición de tarjeta, sobregiro</li>
+                    <li><strong>Derechos del consumidor:</strong> Procedimientos de reclamación, protección de datos y reversión de transacciones</li>
+                    <li><strong>Medidas de seguridad:</strong> Uso de claves, notificaciones de transacciones, bloqueo inmediato</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
