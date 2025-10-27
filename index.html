@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             min-height: 100vh;
             padding: 20px;
             line-height: 1.6;
@@ -35,10 +35,10 @@
         }
 
         .header h1 {
-            color: #667eea;
+            color: #11998e;
             font-size: 2.5em;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -55,11 +55,11 @@
             padding: 15px;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #11998e;
         }
 
         .info-item strong {
-            color: #764ba2;
+            color: #0d7d70;
             display: block;
             margin-bottom: 5px;
         }
@@ -90,11 +90,11 @@
         }
 
         .certificate-title {
-            color: #667eea;
+            color: #11998e;
             font-size: 2em;
             margin-bottom: 30px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #764ba2;
+            border-bottom: 3px solid #38ef7d;
             position: relative;
         }
 
@@ -105,7 +105,7 @@
             left: 0;
             width: 100px;
             height: 3px;
-            background: #667eea;
+            background: #11998e;
             animation: slideRight 1s ease;
         }
 
@@ -136,38 +136,86 @@
             margin-top: 30px;
         }
 
-        .content-section h3 {
-            color: #764ba2;
-            font-size: 1.3em;
-            margin: 25px 0 15px 0;
-            padding-left: 15px;
-            border-left: 4px solid #667eea;
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .content-section p {
+        .accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #0d7d70 0%, #2ed968 100%);
+        }
+
+        .accordion-header h3 {
+            font-size: 1.2em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .accordion-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: white;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+            padding: 25px;
+        }
+
+        .accordion-content p {
             color: #444;
             margin-bottom: 15px;
-            padding-left: 15px;
             text-align: justify;
+            line-height: 1.8;
         }
 
-        .content-section ul {
+        .accordion-content ul {
             list-style: none;
-            padding-left: 15px;
+            padding-left: 0;
         }
 
-        .content-section li {
+        .accordion-content li {
             color: #555;
             margin-bottom: 12px;
             padding-left: 30px;
             position: relative;
+            line-height: 1.7;
         }
 
-        .content-section li::before {
+        .accordion-content li::before {
             content: '▸';
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #11998e;
             font-size: 1.2em;
             font-weight: bold;
         }
@@ -223,11 +271,15 @@
             .header-info {
                 grid-template-columns: 1fr;
             }
+
+            .accordion-header h3 {
+                font-size: 1em;
+            }
         }
 
         .placeholder-text {
             text-align: center;
-            color: #667eea;
+            color: #11998e;
             font-style: italic;
             padding: 40px;
             background: linear-gradient(135deg, #f5f7fa 0%, #e0e7ef 100%);
@@ -259,34 +311,69 @@
             </div>
 
             <div class="content-section">
-                <h3>¿Qué es el ahorro?</h3>
-                <p>El ahorro es la porción de los ingresos que no se destina al consumo inmediato y se reserva para el futuro. Representa una decisión consciente de posponer el gasto presente con el objetivo de contar con recursos disponibles para emergencias, metas específicas o inversiones futuras. El ahorro es fundamental para construir estabilidad financiera y alcanzar objetivos a mediano y largo plazo.</p>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Qué es el ahorro?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El ahorro es la porción de los ingresos que no se destina al consumo inmediato y se reserva para el futuro. Representa una decisión consciente de posponer el gasto presente con el objetivo de contar con recursos disponibles para emergencias, metas específicas o inversiones futuras. El ahorro es fundamental para construir estabilidad financiera y alcanzar objetivos a mediano y largo plazo.</p>
+                    </div>
+                </div>
 
-                <h3>¿Cuál es la mejor alternativa para ahorrar?</h3>
-                <p>La mejor alternativa para ahorrar depende de los objetivos personales, el horizonte temporal y el perfil de riesgo de cada persona. Entre las opciones más recomendadas se encuentran: cuentas de ahorro tradicionales para liquidez inmediata, CDTs o bonos para plazos definidos con mayor rentabilidad, fondos de inversión para diversificación, y el método de ahorro automático que permite apartar un porcentaje fijo del ingreso antes de realizar cualquier gasto.</p>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Cuál es la mejor alternativa para ahorrar?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>La mejor alternativa para ahorrar depende de los objetivos personales, el horizonte temporal y el perfil de riesgo de cada persona. Entre las opciones más recomendadas se encuentran: cuentas de ahorro tradicionales para liquidez inmediata, CDTs o bonos para plazos definidos con mayor rentabilidad, fondos de inversión para diversificación, y el método de ahorro automático que permite apartar un porcentaje fijo del ingreso antes de realizar cualquier gasto.</p>
+                    </div>
+                </div>
 
-                <h3>¿Qué es el presupuesto?</h3>
-                <p>El presupuesto es una herramienta de planeación financiera que permite organizar, controlar y proyectar los ingresos y gastos durante un período determinado. Es un plan detallado que ayuda a tomar decisiones informadas sobre cómo asignar los recursos disponibles, priorizar necesidades y evitar el sobreendeudamiento.</p>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Qué es el presupuesto?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El presupuesto es una herramienta de planeación financiera que permite organizar, controlar y proyectar los ingresos y gastos durante un período determinado. Es un plan detallado que ayuda a tomar decisiones informadas sobre cómo asignar los recursos disponibles, priorizar necesidades y evitar el sobreendeudamiento.</p>
+                    </div>
+                </div>
 
-                <h3>¿Cómo se hace un presupuesto?</h3>
-                <ul>
-                    <li><strong>Registrar todos los ingresos:</strong> Identificar todas las fuentes de ingreso mensual (salario, comisiones, rentas, etc.)</li>
-                    <li><strong>Listar todos los gastos:</strong> Clasificar los gastos en fijos (arriendo, servicios, transporte) y variables (alimentación, entretenimiento)</li>
-                    <li><strong>Categorizar y priorizar:</strong> Separar gastos esenciales de los opcionales</li>
-                    <li><strong>Establecer metas de ahorro:</strong> Definir un porcentaje o monto fijo para ahorrar mensualmente</li>
-                    <li><strong>Hacer seguimiento:</strong> Revisar periódicamente el cumplimiento del presupuesto y hacer ajustes necesarios</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Cómo se hace un presupuesto?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Registrar todos los ingresos:</strong> Identificar todas las fuentes de ingreso mensual (salario, comisiones, rentas, etc.)</li>
+                            <li><strong>Listar todos los gastos:</strong> Clasificar los gastos en fijos (arriendo, servicios, transporte) y variables (alimentación, entretenimiento)</li>
+                            <li><strong>Categorizar y priorizar:</strong> Separar gastos esenciales de los opcionales</li>
+                            <li><strong>Establecer metas de ahorro:</strong> Definir un porcentaje o monto fijo para ahorrar mensualmente</li>
+                            <li><strong>Hacer seguimiento:</strong> Revisar periódicamente el cumplimiento del presupuesto y hacer ajustes necesarios</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h3>Tips y reglas para el manejo del dinero y planeación financiera</h3>
-                <ul>
-                    <li><strong>Regla 50/30/20:</strong> Destinar 50% a necesidades básicas, 30% a deseos y 20% al ahorro</li>
-                    <li><strong>Pague primero:</strong> Apartar el ahorro antes de gastar, no después</li>
-                    <li><strong>Fondo de emergencia:</strong> Mantener un ahorro equivalente a 3-6 meses de gastos esenciales</li>
-                    <li><strong>Evitar deudas innecesarias:</strong> Usar el crédito de forma responsable y evitar compras impulsivas</li>
-                    <li><strong>Automatizar ahorros:</strong> Configurar transferencias automáticas a cuentas de ahorro</li>
-                    <li><strong>Revisar gastos hormiga:</strong> Identificar y reducir pequeños gastos frecuentes que suman grandes cantidades</li>
-                    <li><strong>Educación financiera continua:</strong> Mantenerse informado sobre productos financieros y estrategias de inversión</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Tips y reglas para el manejo del dinero y planeación personal financiera</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Regla 50/30/20:</strong> Destinar 50% a necesidades básicas, 30% a deseos y 20% al ahorro</li>
+                            <li><strong>Pague primero:</strong> Apartar el ahorro antes de gastar, no después</li>
+                            <li><strong>Fondo de emergencia:</strong> Mantener un ahorro equivalente a 3-6 meses de gastos esenciales</li>
+                            <li><strong>Evitar deudas innecesarias:</strong> Usar el crédito de forma responsable y evitar compras impulsivas</li>
+                            <li><strong>Automatizar ahorros:</strong> Configurar transferencias automáticas a cuentas de ahorro</li>
+                            <li><strong>Revisar gastos hormiga:</strong> Identificar y reducir pequeños gastos frecuentes que suman grandes cantidades</li>
+                            <li><strong>Educación financiera continua:</strong> Mantenerse informado sobre productos financieros y estrategias de inversión</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -298,57 +385,121 @@
             </div>
 
             <div class="content-section">
-                <h3>¿Qué es una tarjeta de crédito y para qué sirve?</h3>
-                <p>Una tarjeta de crédito es un instrumento financiero emitido por una entidad bancaria que permite realizar compras y disponer de dinero hasta un límite preestablecido, sin necesidad de tener fondos propios en el momento de la transacción. Funciona como un préstamo renovable que debe ser pagado en una fecha establecida. Sirve para facilitar compras, diferir pagos, acceder a beneficios y construir historial crediticio.</p>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Qué es una tarjeta de crédito y para qué sirve?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Una tarjeta de crédito es un instrumento financiero emitido por una entidad bancaria que permite realizar compras y disponer de dinero hasta un límite preestablecido, sin necesidad de tener fondos propios en el momento de la transacción. Funciona como un préstamo renovable que debe ser pagado en una fecha establecida. Sirve para facilitar compras, diferir pagos, acceder a beneficios y construir historial crediticio.</p>
+                    </div>
+                </div>
 
-                <h3>Características y beneficios de la tarjeta de crédito</h3>
-                <ul>
-                    <li><strong>Cupo de crédito:</strong> Límite máximo de dinero disponible para usar</li>
-                    <li><strong>Período de gracia:</strong> Tiempo entre la compra y la fecha de pago sin generar intereses</li>
-                    <li><strong>Pago mínimo:</strong> Cantidad mínima que se debe pagar mensualmente</li>
-                    <li><strong>Beneficios adicionales:</strong> Puntos, millas, cashback, seguros de viaje y compra</li>
-                    <li><strong>Financiamiento:</strong> Posibilidad de diferir pagos en cuotas</li>
-                    <li><strong>Aceptación internacional:</strong> Uso en establecimientos y compras en línea a nivel mundial</li>
-                    <li><strong>Construcción de historial:</strong> Uso responsable mejora el puntaje crediticio</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Características y beneficios de la tarjeta de crédito</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Cupo de crédito:</strong> Límite máximo de dinero disponible para usar</li>
+                            <li><strong>Período de gracia:</strong> Tiempo entre la compra y la fecha de pago sin generar intereses</li>
+                            <li><strong>Pago mínimo:</strong> Cantidad mínima que se debe pagar mensualmente</li>
+                            <li><strong>Beneficios adicionales:</strong> Puntos, millas, cashback, seguros de viaje y compra</li>
+                            <li><strong>Financiamiento:</strong> Posibilidad de diferir pagos en cuotas</li>
+                            <li><strong>Aceptación internacional:</strong> Uso en establecimientos y compras en línea a nivel mundial</li>
+                            <li><strong>Construcción de historial:</strong> Uso responsable mejora el puntaje crediticio</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h3>Tipos de tarjetas de crédito</h3>
-                <ul>
-                    <li><strong>Tarjetas clásicas:</strong> Cupo básico y beneficios estándar</li>
-                    <li><strong>Tarjetas doradas (Gold):</strong> Mayor cupo y beneficios adicionales</li>
-                    <li><strong>Tarjetas platinum:</strong> Cupos elevados, seguros premium y acceso a salas VIP</li>
-                    <li><strong>Tarjetas corporativas:</strong> Diseñadas para gastos empresariales</li>
-                    <li><strong>Tarjetas de retail:</strong> Emitidas por tiendas específicas con beneficios en sus establecimientos</li>
-                    <li><strong>Tarjetas con recompensas:</strong> Enfocadas en acumular puntos, millas o cashback</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Tipos de tarjetas de crédito</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Tarjetas clásicas:</strong> Cupo básico y beneficios estándar</li>
+                            <li><strong>Tarjetas doradas (Gold):</strong> Mayor cupo y beneficios adicionales</li>
+                            <li><strong>Tarjetas platinum:</strong> Cupos elevados, seguros premium y acceso a salas VIP</li>
+                            <li><strong>Tarjetas corporativas:</strong> Diseñadas para gastos empresariales</li>
+                            <li><strong>Tarjetas de retail:</strong> Emitidas por tiendas específicas con beneficios en sus establecimientos</li>
+                            <li><strong>Tarjetas con recompensas:</strong> Enfocadas en acumular puntos, millas o cashback</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h3>¿Qué es una tarjeta de débito y para qué sirve?</h3>
-                <p>Una tarjeta de débito es un medio de pago vinculado directamente a una cuenta bancaria, que permite realizar transacciones utilizando únicamente el dinero disponible en dicha cuenta. A diferencia del crédito, no permite gastar más de lo que se tiene. Sirve para realizar compras, retirar efectivo en cajeros automáticos, hacer pagos en línea y transferencias, todo con fondos propios.</p>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Qué es una tarjeta de débito y para qué sirve?</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Una tarjeta de débito es un medio de pago vinculado directamente a una cuenta bancaria, que permite realizar transacciones utilizando únicamente el dinero disponible en dicha cuenta. A diferencia del crédito, no permite gastar más de lo que se tiene. Sirve para realizar compras, retirar efectivo en cajeros automáticos, hacer pagos en línea y transferencias, todo con fondos propios.</p>
+                    </div>
+                </div>
 
-                <h3>Características y beneficios de la tarjeta de débito</h3>
-                <ul>
-                    <li><strong>Control de gastos:</strong> Solo se puede gastar el dinero disponible en la cuenta</li>
-                    <li><strong>Sin deuda:</strong> No genera intereses ni cargos por financiación</li>
-                    <li><strong>Retiros en cajeros:</strong> Acceso inmediato al efectivo</li>
-                    <li><strong>Facilidad de uso:</strong> Aceptada en la mayoría de establecimientos</li>
-                    <li><strong>Sin cuota de manejo elevada:</strong> Generalmente costos menores que tarjetas de crédito</li>
-                    <li><strong>Seguridad:</strong> Menor riesgo de sobreendeudamiento</li>
-                    <li><strong>Transacciones inmediatas:</strong> Los cargos se reflejan de inmediato en la cuenta</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Características y beneficios de la tarjeta de débito</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Control de gastos:</strong> Solo se puede gastar el dinero disponible en la cuenta</li>
+                            <li><strong>Sin deuda:</strong> No genera intereses ni cargos por financiación</li>
+                            <li><strong>Retiros en cajeros:</strong> Acceso inmediato al efectivo</li>
+                            <li><strong>Facilidad de uso:</strong> Aceptada en la mayoría de establecimientos</li>
+                            <li><strong>Sin cuota de manejo elevada:</strong> Generalmente costos menores que tarjetas de crédito</li>
+                            <li><strong>Seguridad:</strong> Menor riesgo de sobreendeudamiento</li>
+                            <li><strong>Transacciones inmediatas:</strong> Los cargos se reflejan de inmediato en la cuenta</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h3>Información que debe ser suministrada al consumidor financiero</h3>
-                <ul>
-                    <li><strong>Tasas de interés:</strong> Tasa nominal, efectiva anual y costo total del crédito</li>
-                    <li><strong>Comisiones y tarifas:</strong> Cuota de manejo, retiros, avances en efectivo, pagos internacionales</li>
-                    <li><strong>Fecha de corte y pago:</strong> Períodos de facturación y vencimiento</li>
-                    <li><strong>Pago mínimo y total:</strong> Cálculo detallado de cada uno</li>
-                    <li><strong>Seguros asociados:</strong> Coberturas, costos y condiciones de seguros incluidos</li>
-                    <li><strong>Penalidades:</strong> Cargos por mora, reposición de tarjeta, sobregiro</li>
-                    <li><strong>Derechos del consumidor:</strong> Procedimientos de reclamación, protección de datos y reversión de transacciones</li>
-                    <li><strong>Medidas de seguridad:</strong> Uso de claves, notificaciones de transacciones, bloqueo inmediato</li>
-                </ul>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Información que debe ser suministrada al consumidor financiero</h3>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Tasas de interés:</strong> Tasa nominal, efectiva anual y costo total del crédito</li>
+                            <li><strong>Comisiones y tarifas:</strong> Cuota de manejo, retiros, avances en efectivo, pagos internacionales</li>
+                            <li><strong>Fecha de corte y pago:</strong> Períodos de facturación y vencimiento</li>
+                            <li><strong>Pago mínimo y total:</strong> Cálculo detallado de cada uno</li>
+                            <li><strong>Seguros asociados:</strong> Coberturas, costos y condiciones de seguros incluidos</li>
+                            <li><strong>Penalidades:</strong> Cargos por mora, reposición de tarjeta, sobregiro</li>
+                            <li><strong>Derechos del consumidor:</strong> Procedimientos de reclamación, protección de datos y reversión de transacciones</li>
+                            <li><strong>Medidas de seguridad:</strong> Uso de claves, notificaciones de transacciones, bloqueo inmediato</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Funcionalidad del acordeón
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const accordionItem = this.parentElement;
+                const isActive = accordionItem.classList.contains('active');
+                
+                // Cerrar todos los acordeones
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Si no estaba activo, abrirlo
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
